@@ -36,8 +36,8 @@ RUN $PIP install jupyterlab ipython PySide2 qiskit-metal ipykernel && \
     git clone https://github.com/qiskit-community/qiskit-metal/ && \
     git clone https://github.com/qiskit-community/intro-to-quantum-computing-and-quantum-hardware && \
     cd qiskit-metal && \
-    $PIP install -r requirements.txt -r requirements-dev.txt -e . && \
     ipython kernel install --user --name=metal && \
+    $PIP install -r requirements.txt -r requirements-dev.txt -e . && \
     cd ..
 
 RUN mkdir projects && mv ./qiskit-metal/tutorials projects && mv ./intro-to-quantum-computing-and-quantum-hardware projects
