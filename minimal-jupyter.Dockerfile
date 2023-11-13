@@ -3,6 +3,7 @@ FROM quay.io/jupyter/minimal-notebook
 
 ENV LANG en_US.utf8
 ENV TZ="America/New_York"
+ENV XDG_RUNTIME_DIR /tmp/runtime-metal
 
 USER root
 RUN groupadd -r metal && useradd -r -g metal metal
