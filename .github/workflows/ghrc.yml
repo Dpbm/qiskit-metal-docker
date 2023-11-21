@@ -37,14 +37,14 @@ jobs:
                   context: .
                   file: ./ubuntu.Dockerfile
                   push: true
-                  tags: ${{ steps.meta.outputs.tags }}
+                  tags: latest
                   labels: ${{ steps.meta.outputs.labels }}
             
             - name: Build and push Docker jupyter-minimal image
               uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
               with:
                   context: .
-                  file: ./jupyter-minimal.Dockerfile
+                  file: ./minimal-jupyter.Dockerfile
                   push: true
-                  tags: ${{ steps.meta.outputs.tags }}
+                  tags: latest
                   labels: ${{ steps.meta.outputs.labels }}
