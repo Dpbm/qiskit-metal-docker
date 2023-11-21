@@ -1,0 +1,60 @@
+name: Create and publish a Docker image
+
+on:
+    push:
+        branches: ['main']
+
+env:
+    REGISTRY: ghcr.io
+    IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+    build-and-push-image:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Log in to the Container registry
+              uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.TOKEN }}
+
+            - name: Extract metadata (tags, labels) for Docker (ubuntu image)
+              id: meta-ubuntu
+              uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+              with:
+                  tags: |
+                      type=raw,value=latest
+                      type=raw,value=latest-ubuntu
+                  images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+            - name: Build and push Docker ubuntu image
+              uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+              with:
+                  context: .
+                  file: ./ubuntu.Dockerfile
+                  push: true
+                  tags: ${{ steps.meta-ubuntu.outputs.tags }}
+                  labels: ${{ steps.meta-ubuntu.outputs.labels }}
+
+            - name: Extract metadata (tags, labels) for Docker (minimal-jupyter image)
+              id: meta-minimal-jupyter
+              uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+              with:
+                  tags: type=raw,value=latest-minimal-jupyter
+                  images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+            - name: Build and push Docker minimal-jupyter image
+              uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+              with:
+                  context: .
+                  file: ./minimal-jupyter.Dockerfile
+                  push: true
+                  tags: ${{ steps.meta-minimal-jupyter.outputs.tags }}
+                  labels: ${{ steps.meta-minimal-jupyter.outputs.labels }}

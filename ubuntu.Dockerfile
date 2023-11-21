@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ubuntu:latest
-
+LABEL org.opencontainers.image.source=https://github.com/Dpbm/qiskit-metal-docker
 ENV LANG en_US.utf8
 ENV TZ="America/New_York"
 ENV DEBIAN_FRONTEND noninteractive

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM quay.io/jupyter/minimal-notebook
-
+LABEL org.opencontainers.image.source=https://github.com/Dpbm/qiskit-metal-docker
 ENV LANG en_US.utf8
 ENV TZ="America/New_York"
 ENV XDG_RUNTIME_DIR /tmp/runtime-metal
@@ -10,12 +10,12 @@ RUN groupadd -r metal && useradd -r -g metal metal
 RUN apt update && \
     apt upgrade -y && \
     apt install -y build-essential \
-        libgl1-mesa-glx \
-        libglu1-mesa \ 
-        libxcursor-dev \ 
-        libxft2 \ 
-        libxinerama1 \
-        libexpat1
+    libgl1-mesa-glx \
+    libglu1-mesa \ 
+    libxcursor-dev \ 
+    libxft2 \ 
+    libxinerama1 \
+    libexpat1
 
 USER metal
 ENV HOME /home/metal
