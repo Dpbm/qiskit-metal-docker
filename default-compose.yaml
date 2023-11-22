@@ -1,0 +1,11 @@
+services:
+  metal:
+    build: 
+      context: ./
+      dockerfile: ubuntu.Dockerfile
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+    environment:
+      DISPLAY: $DISPLAY
+    ports:
+      - 8888:8888
