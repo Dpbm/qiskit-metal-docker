@@ -9,7 +9,7 @@ env:
     IMAGE_NAME: qiskit-metal
 
 jobs:
-    push_to_registry:
+    build-and-push-image-dockerhub:
         name: Push Docker image to Docker Hub
         runs-on: ubuntu-latest
         steps:
