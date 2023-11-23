@@ -35,7 +35,7 @@ jobs:
               uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
               with:
                   context: .
-                  file: ./ubuntu.Dockerfile
+                  file: ubuntu.Dockerfile
                   push: true
                   tags: ${{ steps.meta-ubuntu.outputs.tags }}
                   labels: ${{ steps.meta-ubuntu.outputs.labels }}
@@ -51,7 +51,7 @@ jobs:
               uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
               with:
                   context: .
-                  file: ./minimal-jupyter.Dockerfile
+                  file: minimal-jupyter.Dockerfile
                   push: true
                   tags: ${{ steps.meta-minimal-jupyter.outputs.tags }}
                   labels: ${{ steps.meta-minimal-jupyter.outputs.labels }}
