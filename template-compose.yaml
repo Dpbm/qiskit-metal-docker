@@ -1,0 +1,13 @@
+services:
+  metal:
+    build: 
+      context: ./
+      #insert here the desired image
+      dockerfile: # e.g. ubuntu.Dockerfile
+    volumes:
+      - # map your .X11-unix file here like: /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - # if you want to add a new volume to save files, just add here
+    environment:
+      DISPLAY: $DISPLAY
+    ports:
+      - 8888:8888

@@ -25,6 +25,7 @@ These are pretty the same thing, just with more dependencies or default tooling 
 To use these images you must have installed on your host machine:
 
 - [Docker](https://www.docker.com/)
+- [Docker compose](https://docs.docker.com/compose/) (optional)
 - [xServer](https://www.x.org/wiki/) (for metal GUI)
 
 Also set your the [`DISPLAY`](https://www.x.org/archive/X11R6.8.0/doc/X.7.html) environment variable, in case it wasn't configured before.
@@ -63,6 +64,26 @@ docker run -d -v /tmp/.X11-unix:/tmp/.X11-unix:ro -e DISPLAY=$DISPLAY ghcr.io/dp
 # or (no metal GUI)
 docker run -d ghcr.io/dpbm/qiskit-metal-docker:[tag]
 ```
+
+If you want a simpler way to run it, you can use the docker compose. There're two files for that:
+
+- [default-compose.yaml](./default-compose.yaml)
+- [template-compose.yaml](./template-compose.yaml)
+
+The [default-compose.yaml](./default-compose.yaml) has the default configuration to run the image based on `Ubuntu`, and the second one is a template for those who want to add your own settings. 
+
+This last one can be renamed for `<whatever_you_want>.yaml`.
+
+To start the image using docker compose, run:
+
+```bash
+docker compose --project-directory ./ -f default-compose.yaml up -d
+
+#or
+
+docker compose --project-directory ./ -f <whatever>.yaml up -d
+```
+
 
 Then, access `http://<docker_ip>:8888` on your browser. If you don't know the `docker ip` run:
 
