@@ -36,7 +36,7 @@ And finally, for `windows` users, check the either [x410](https://x410.dev/) or 
 
 The `X` is just required for the `metal GUI application`, so if you don't need that, just skip this step.
 
-Finally, you may need to add the access permission to your `X server`, to do that type:
+Finally, you may need to add the access permission to your `X server`, to do that, type:
 
 ```bash
 xhost +local:root
