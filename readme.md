@@ -119,5 +119,3 @@ If you enjoyed our project and want to help us evolve it, you can:
 - complete a [todo item](https://github.com/Dpbm/qiskit-metal-docker/issues/8)
 
 Be kind in your comments, and remember, there's another person across the monitor.
-
-Although it's a qiskit derived project, keep in mind that this project has no connection with the [official qiskit](https://qiskit.org/), so if you aim to achieve the `qiskit advocate` or other credential/certification, probably this is not the project for you.
