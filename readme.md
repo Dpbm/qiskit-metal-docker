@@ -39,13 +39,13 @@ The `X` is just required for the `metal GUI application`, so if you don't need t
 Finally, you may need to add the access permission to your `X server`, to do that, type:
 
 ```bash
-xhost +local:root
+xhost +local:docker
 ```
 
 and then to remove the permission, after using the docker image, you can run:
 
 ```bash
-xhost -local:root
+xhost -local:docker
 ```
 
 
